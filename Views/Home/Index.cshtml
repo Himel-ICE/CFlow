@@ -1,0 +1,102 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+@using System.Data;
+@using CFlow.Models
+@model CFlow.Models.Questions
+
+    <div class="QA-section">
+        <div class="sorting-bar">
+            <input type="submit" value="All" name="All" />
+            <input type="submit" value="Most viewed" name="MostViewed" />
+            <input type="submit" value="New" name="New" />
+        </div>
+        <div class="user-question">
+            @using (Html.BeginForm("QuestionPost", "Home", FormMethod.Post))
+            {
+                <div class="write-content">
+                    <input type="text" name="UserQuestion" placeholder="Ask your question" />
+                    <input type="text" name="QuestionDescription" placeholder="Question description" />
+                </div>
+                <div class="tags-and-post">
+                    <select name="tag" id="">
+                        <option value="Python">Python</option>
+                        <option value="C Plus">C Plus</option>
+                        <option value="HTML">HTML</option>
+                        <option value=".NET">.NET</option>
+                    </select>
+                    <input type="submit" name="Post" value="Post" />
+                </div>
+            }
+        </div>
+        @{
+            DataTable datatable = new DataTable();
+            datatable = Questions.QuestionTable();
+            var QuestionsTable = (from p in datatable.AsEnumerable()
+                                  select new
+                                  {
+                                      question = p.Field<string>("Question"),
+                                      qID = p.Field<int>("QID"),
+                                      qTime = p.Field<string>("PostTime"),
+                                      qDescription = p.Field<string>("Descriptions")
+                                  }).ToList();
+            foreach (var obj in QuestionsTable)
+            {
+                <div class="poseted-question">
+                    <div class="profile-view">
+                        <p>Question-@obj.qID</p>
+                    </div>
+                    <div class="date-time-view">
+                        <div class="date-time">
+                            <p>@obj.qTime</p>
+                        </div>
+                        <div class="count-view">
+                            <p>11 views</p>
+                        </div>
+                    </div>
+                    <div class="question">
+                        <div class="row-question">
+                            <h4>@obj.question</h4>
+                        </div>
+                        <div class="question-description">
+                            <p>@obj.qDescription</p><br>
+                            <button>Answers</button>
+                        </div>
+                    </div>
+                    <div class="comment-section">
+                        @{
+                            DataTable commentTable = new DataTable();
+                            commentTable = Questions.CommentTable();
+                            var comments = (from p in commentTable.AsEnumerable()
+                                            select new
+                                            {
+                                                comment = p.Field<string>("comment"),
+                                                qid = p.Field<int>("QID")
+
+                                            }).ToList();
+                            foreach (var com in comments)
+                            {
+                                if (com.qid == obj.qID)
+                                {
+                                    <div class="other-comment">
+                                        <p>@com.comment</p>
+                                    </div>
+                                }
+                            }
+                        }
+                        <div class="new-comment">
+                            @using (Html.BeginForm("CommentPost", "Home", FormMethod.Post))
+                            {
+                                <input type="text" name="AnsComment" placeholder="Write comment" />
+                                <input type="text" value="@obj.qID" name="QestionID" style="display:none" />
+                                <input type="submit" name="SubComment" value="Comment">
+                            }
+                        </div>
+                    </div>
+
+                </div>
+            }
+        }
+
+
+    </div>

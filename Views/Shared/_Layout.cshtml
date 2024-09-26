@@ -1,0 +1,370 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <style>
+        * {
+            font-family: Poppins;
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            background: #241414;
+        }
+        p{
+            overflow-y:auto;
+            overflow-x:hidden
+
+        }
+        h4 {
+            overflow-y:auto;
+            overflow-x:hidden
+        }
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 40px;
+            padding: 5px;
+            background: #120404;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            overflow: hidden;
+        }
+
+        .logo {
+            margin-left: 10px;
+            padding: 0 5px 0 5px;
+            cursor: pointer;
+            color: #be0023
+        }
+
+        .search input {
+            width: 130%;
+            height: 30px;
+            color: rgb(255, 255, 255);
+            background: rgba(29, 28, 33, 0.874);
+            margin: 0px;
+            padding: 3px 10px 3px 10px;
+            border: 1px solid #0c1f01;
+            border-radius: 20px;
+            outline: none;
+        }
+
+        .notifications {
+            margin: 5px 25px 0 0;
+            display: flex;
+            flex-direction: row;
+        }
+
+        .message {
+            margin: 0 5px 0 5px;
+            cursor: pointer
+        }
+
+        .notification {
+            margin: 0 5px 0 5px;
+            cursor: pointer
+        }
+
+        .profile {
+            margin: 0 5px 0 5px;
+            cursor: pointer
+        }
+        .side-bar {
+            width: 170px;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            margin-top: 50px;
+            background: #120404;
+            color: #b4b4b4;
+        }
+
+        .side-bar .side-bar-top {
+            margin: 5px 0 15px 5px;
+            padding: 5px;
+        }
+
+        .side-bar .side-bar-middle {
+            margin: 15px 0 15px 5px;
+            padding: 5px;
+            border-top: 1px solid rgb(78, 12, 12);
+        }
+
+        .side-bar .side-bar-buttom {
+            margin: 5px 0 5px 5px;
+            padding: 5px;
+            border-top: 1px solid rgb(78, 12, 12);
+        }
+
+        .side-bar .Common {
+            display: flex;
+            flex-direction: row;
+            margin: 10px 0 0 0;
+            padding: 15px 0 0 0;
+        }
+
+        .Common span {
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        .Common p {
+            margin-left: 10px;
+            font-weight: bold;
+        }
+        .main-body{
+            margin-top: 40px;
+            margin-left: 170px;
+            margin-right: 250px;
+            padding: 30px 50px;
+        }
+
+            .QA-section .sorting-bar {
+                color: white;
+                height: 40px;
+                background: #110e0e;
+                margin: 5px;
+                display: flex;
+                flex-direction: row;
+                justify-content: space-around;
+                min-width: 300px;
+                border-radius: 5px;
+            }
+
+                .QA-section .sorting-bar input {
+                    padding: 0 5px;
+                    margin: 5px;
+                    border-radius: 10px;
+                    background: #403636;
+                    border: 0;
+                    color: white;
+                }
+
+            .QA-section .user-question {
+                display: flex;
+                flex-direction: column;
+                min-width: 500px;
+                min-height: 168px;
+                border: 1px solid #4d3030;
+                padding: 5px;
+                border-radius: 8px;
+                background: #443838;
+            }
+
+        .user-question .write-content {
+            display: flex;
+            flex-direction: column;
+        }
+
+            .user-question .write-content input {
+                min-height: 50px;
+                border: 1px solid #785656;
+                background: #403636;
+                color: white;
+                padding: 10px;
+                outline: none;
+            }
+         .user-question .write-content input:focus{}
+        .user-question .tags-and-post {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .tags-and-post select {
+            margin: 5px;
+            background: #4d3030;
+            margin: 2px;
+            padding: 3px;
+            border: 0px;
+            color: white;
+        }
+
+        .tags-and-post input {
+            margin: 5px;
+            background: #ff0000;
+            margin: 5px;
+            padding: 5px;
+            border: 0px;
+            color: white;
+            font-weight: bold;
+            border: 0px;
+            border-radius: 3px;
+        }
+
+        .poseted-question {
+            margin: 15px 0;
+            padding: 5px;
+            background: #3c3b3b;
+            border-radius: 10px;
+            color: white;
+            min-height: 200px;
+            max-height: 300px;
+            overflow-x: hidden;
+            overflow-y: auto
+        }
+
+            .poseted-question .profile-view {
+                margin-left: 10px;
+                font-size: 18px;
+                font-weight: bold;
+                color: rgb(227, 214, 214);
+            }
+
+        .date-time-view {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+
+            .date-time-view p {
+                font-size: 12px;
+                color: #b4b4b4;
+                margin: 0 10px 0 10px;
+            }
+
+        .question .row-question {
+            margin: 5px;
+        }
+
+            .question .row-question h4 {
+                margin: 5px 0;
+            }
+
+        .question .question-description p {
+            margin: 5px 5px;
+            font-size: 14px;
+            color: #b4b4b4;
+            border-top: 1px solid rgb(186, 103, 103);
+        }
+
+        .question .question-description button {
+            background: #3c3b3b;
+            color: #939393;
+            font-size: 12px;
+            border: 0;
+            margin-left: 5px;
+            cursor: pointer;
+        }
+
+        .comment-section .other-comment p {
+            font-size: 14px;
+            margin: 10px 5px;
+            padding: 5px;
+            border-top: 1px solid rgb(89, 87, 87);
+            border-bottom: 1px solid rgb(89, 87, 87);
+        }
+
+        .new-comment input {
+            margin: 5px;
+            padding: 5px;
+            background: #5f5f5f;
+            border: 0;
+            border-radius: 5px;
+            color: #ffffff;
+            outline: none;
+        }
+        .right-sidebar {
+            width: 250px;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            right: 0;
+            margin-top: 50px;
+            background: #120404;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="logo">
+            <h2>CFlow</h2>
+        </div>
+        <div class="search">
+            <input type="text" placeholder="Search on AnswerHouse">
+        </div>
+        <div class="notifications">
+            <div class="message">
+                <span class="material-symbols-outlined">
+                    sms
+                </span>
+            </div>
+            <div class="notification">
+                <span class="material-symbols-outlined">
+                    notifications
+                </span>
+            </div>
+            <div class="profile">
+                <span class="material-symbols-outlined">
+                    person
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="side-bar">
+        <div class="side-bar-top">
+            <div class="Common">
+                <span class="material-symbols-outlined">
+                    home
+                </span>
+                <p>Home</p>
+            </div>
+            <div class="Common">
+                <span class="material-symbols-outlined">
+                    arrow_warm_up
+                </span>
+                <p>Tranding</p>
+            </div>
+        </div>
+        <div class="side-bar-middle">
+            <div class="Common">
+                <span class="material-symbols-outlined">
+                    memory_alt
+                </span>
+                <p>Technology</p>
+            </div>
+            <div class="Common">
+                <span class="material-symbols-outlined">
+                    headphones
+                </span>
+                <p>Music</p>
+            </div>
+            <div class="Common">
+                <span class="material-symbols-outlined">
+                    sports
+                </span>
+                <p>Sports</p>
+            </div>
+        </div>
+        <div class="side-bar-buttom">
+            <div class="Common">
+                <span class="material-symbols-outlined">
+                    info
+                </span>
+                <p>About</p>
+            </div>
+            <div class="Common">
+                <span class="material-symbols-outlined">
+                    help
+                </span>
+                <p>Support</p>
+            </div>
+        </div>
+    </div>
+    <div class="main-body">
+            @RenderBody()
+    </div>
+    <div class="right-sidebar"></div>
+</body>
+
+</html>
